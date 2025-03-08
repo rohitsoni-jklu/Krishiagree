@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiAgree - Contract Farming Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .navbar {
+            background-color: #4CAF50;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .navbar h1 {
+            color: white;
+            font-size: 1.5rem;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 1.125rem;
+            position: relative;
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .navbar a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .container {
+            padding: 2rem;
+        }
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            background-color: #e8f5e9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 45%;
+            transform: translateX(-50%) translateY(-33%) rotate(45deg);
+            animation: rotate 6s linear infinite;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease-in-out;
+            position: relative;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .hero button {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .hero button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        .dashboard, .listings, .contracts, .payments, .notifications {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .dashboard h2, .listings h2, .contracts h2, .payments h2, .notifications h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        .dashboard p, .listings p, .contracts p, .payments p, .notifications p {
+            font-size: 1.125rem;
+            color: #555;
+        }
+        .footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        
+        }
+        .container {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 800px;
+            width: 100%;
+            margin: 2rem 0;
+        }
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 1rem;
+        }
+        .description {
+            font-size: 1.125rem;
+            color: #555;
+            line-height: 1.6;
+            text-align: left;
+        }
+        .content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            width: 100%;
+            margin: 2rem 0;
+        }
+        .content img {
+            max-width: 45%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-right: 2rem;
+        }
+        .description {
+            max-width: 45%;
+            font-size: 1.125rem;
+            color: #555;
+            line-height: 1.6;
+            text-align: left;
+        }
+        .description strong {
+            font-size: 1.5rem;
+            color: #4CAF50;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes rotate {
+            from {
+                transform: translateX(-50%) translateY(-33%) rotate(0deg);
+            }
+            to {
+                transform: translateX(-50%) translateY(-33%) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>KrishiAgree</h1>
+        <div>
+            <a href="#">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="listing.html">Listings</a>
+            <a href="contract.html">Contracts</a>
+            <a href="payment.html">Payments</a>
+            <a href="notification.html">Notifications</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="hero">
+            <h1 >Welcome to KrishiAgree</h1>
+            <p>Connecting farmers and buyers for assured contract farming agreements.</p>
+            <button onclick="showDashboard()">Get Started</button>
+        </div>
+        <div class="dashboard" id="dashboard" style="display: none;">
+            <h2>Dashboard</h2>
+            
+            <p>Manage your contracts and listings here.</p>
+        </div>
+        <div class="listings" id="listings" style="display: none;">
+            <h2>Listings</h2>
+            <p>Browse available produce from farmers.</p>
+        </div>
+        <div class="contracts" id="contracts" style="display: none;">
+            <h2>Contracts</h2>
+            <p>Create and manage your contracts here.</p>
+        </div>
+        <div class="payments" id="payments" style="display: none;">
+            <h2>Payments</h2>
+            <p>Process and track your payments securely.</p>
+        </div>
+        <div class="notifications" id="notifications" style="display: none;">
+            <h2>Notifications</h2>
+            <p>Stay updated with real-time notifications.</p>
+        </div>
+    <div class="container">
+        <div class="title">EMPOWERING</div>
+        <div class="content">
+            <div class="description">
+                <strong>Farmers</strong>
+                <p>With KisanAgree, they have full control on the sale of their produce as no middlemen are involved in the entire process. Pricing is transparent and payments are 100% digital at the time of sale. There is no longer a feeling of exploitation as they are in charge of the entire crop selling process.</p>
+            </div>
+            <img src="farmer-image.jpg" alt="Farmer">
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <img src="money.jpg" alt="Farming Equipment">
+            <div class="description">
+                <strong>Buyers</strong>
+                <p>They can rely on KrishiAgree for accurate quality assessments and consistent availability of produce. 100% traceability on the crop's origins and route are also provided to bring about further trust and transparency in the crop procurement process.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy;</p>
+    </div>
+    <script>
+        function showDashboard() {
+            document.getElementById('dashboard').style.display = 'block';
+            document.getElementById('listings').style.display = 'block';
+            document.getElementById('contracts').style.display = 'block';
+            document.getElementById('payments').style.display = 'block';
+            document.getElementById('notifications').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
